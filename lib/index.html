@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library Learner's Information</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            LIBRARY LEARNER'S INFORMATION
+        </div>
+        <div class="form-body">
+            <form id="learner-form" action="submit.php" method="POST">
+                <div class="form-row">
+                    <label>Grade & Section:</label>
+                    <input type="text" name="Grade[section]" required> 
+                </div>
+                <div class="form-row">
+                    <label>Name:</label>
+                    <input type="text" name="Name" required/>
+                </div>
+                <div class="form-row">
+                    <label for="lrn">LRN:</label>
+                    <input type="text" id="lrnInput" pattern="[0-9]{12}" title="Please enter exactly 12 numeric characters" name="LRN" required> 
+                </div>
+                <div class="form-row">
+                    <label>Date:</label>
+                    <input type="date" name="Date"required> 
+                </div>
+                <div class="form-row">
+                    <label>Time:</label>
+                    <input type="text" name="Time" required> 
+                </div>
+                
+                <div class="form-row">
+                    <label>Subject of the Book:</label>
+                    <input type="text" name="subject" required> 
+                </div>
+                <div class="form-row">
+                    <label>Title of the Book:</label>
+                    <input type="text" name="title" required> 
+                </div>
+                <div class="form-row">
+                    <label>Reminder: </label>
+                    <div class="permanent-box">Please take care of the book, do not destroy it, and return it properly. So that others can also use it. Thank you!</div>
+                </div>
+                    <button type="submit">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script>
+        const displayWindow = window.open("post_data.html", "Submitted Data", "width=600, height=400");
+        
+        displayWindow.onload = function() {
+            const formData = new FormData(form);
+            const formEntries = formData.entries();
+            let postData = "<h1>Submitted Information:</h1>";
+        
+            for (const [key, value] of formEntries) {
+                postData += `<p><strong>${key}:</strong> ${value}</p>`;
+            }
+        
+            displayWindow.document.body.innerHTML = postData;
+        };
+        document.addEventListener('DOMContentLoaded', function() {
+        });
+        
+    </script>
+</body>
+</html>
